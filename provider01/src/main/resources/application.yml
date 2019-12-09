@@ -1,0 +1,16 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://122.51.246.6:3306/hotel?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: LX
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  application:
+    name: eureka-server01
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka

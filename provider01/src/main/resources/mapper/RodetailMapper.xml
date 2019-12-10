@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hotel.dao.IRodetailDao">
     <select id="getAllDetail"  resultMap="alls" >
-	select * from rodetail ;
+	select * from rodetail
 </select>
 	<resultMap id="alls" type="Rodetail">
 			<id property="roid" column="roid"/>
@@ -24,8 +24,4 @@
 		</association>
 
 	</resultMap>
-
-
-
-
 </mapper>

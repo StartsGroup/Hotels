@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hotel.dao.IRoundsDao">
     <select id="getAllRound"  resultMap="all" >
-	select * from rounds ;
+	select * from rounds
 </select>
 	<resultMap id="all" type="Rounds">
 			<id property="rotid" column="rotid"/>

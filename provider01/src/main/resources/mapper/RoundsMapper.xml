@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.dao.IRoundsDao">
+    <select id="getAllRound"  resultMap="all" >
+	select * from rounds
+</select>
+	<resultMap id="all" type="Rounds">
+			<id property="rotid" column="rotid"/>
+			<collection property="roundtype" column="rotid"
+						 select="com.hotel.dao.IRoundTypeDao.getRoundType" >
+			</collection>
+
+	</resultMap>
+
+	<select id="getById" resultMap="get" >
+		select * from rounds where roid=#{roid}
+	</select>
+	<resultMap id="get" type="Rounds">
+		<id property="rotid" column="rotid"/>
+		<association property="roundtype" column="rotid"
+					select="com.hotel.dao.IRoundTypeDao.getRoundType" >
+		</association>
+
+	</resultMap>
+
+
+
+
+</mapper>

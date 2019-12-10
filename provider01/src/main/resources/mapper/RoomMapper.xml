@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.dao.IRoomDao">
+    <select id="getAllRoom"  resultMap="als" >
+	select * from room
+</select>
+	<resultMap id="als" type="Room">
+			<id property="rtid" column="rtid"/>
+			<association property="rodetail" column="rtid"
+						 select="com.hotel.dao.IRodetailDao.getByRtid" >
+			</association>
+
+	</resultMap>
+
+	<select id="getRoomById" resultMap="gts" >
+		select * from room where rid=#{rid}
+	</select>
+	<resultMap id="gts" type="Room">
+		<id property="rtid" column="rtid"/>
+		<association property="rodetail" column="rtid"
+					 select="com.hotel.dao.IRodetailDao.getByRtid" >
+		</association>
+
+	</resultMap>
+</mapper>

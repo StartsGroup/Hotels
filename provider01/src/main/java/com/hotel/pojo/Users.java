@@ -1,6 +1,14 @@
 package com.hotel.pojo;
 
-public class Users {
+import lombok.Data;
 
-    private  int uid;
+@Data
+public class Users {
+    private int uid;
+    private int tid;
+    private String uname;
+    private String upassword;
+    private String userid;
+    private String tel;
+    private double uprice;
 }

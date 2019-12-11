@@ -18,14 +18,18 @@ public class RoundsTypeController {
         return roundTypeService.getAllRoundTypes();
     }
 
+
     @GetMapping("/getType/{rotid}")
     public RoundType getById(@PathVariable int  rotid){
         return roundTypeService.getRoundType(rotid);
     }
 
-    @DeleteMapping("/deleteType/{rotid}")
-    public boolean deleteById(@PathVariable int  rotid){
-        return roundTypeService.deleteRoundType(rotid);
+
+    @PostMapping("/deleteType/{rotid}")
+    public String deleteById(@PathVariable int  rotid){
+        boolean flag= roundTypeService.deleteRoundType(rotid);
+        String result=flag ==true ? "success":"fail";
+        return  result;
     }
 
     @PostMapping("/saveType")
@@ -34,6 +38,7 @@ public class RoundsTypeController {
         String result=flag ==true ? "success":"fail";
         return  result;
     }
+
 
     @PostMapping("/updateType")
     public String updateRoundType(@RequestBody RoundType roundType){

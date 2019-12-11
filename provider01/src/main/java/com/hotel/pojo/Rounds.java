@@ -11,5 +11,7 @@ public class Rounds {
 
     private String img;
 
+    private int rotid;
+
     private RoundType roundtype;
 }

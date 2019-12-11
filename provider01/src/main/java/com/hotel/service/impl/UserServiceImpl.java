@@ -1,4 +1,4 @@
-package com.hotel.service.serviceImpl;
+package com.hotel.service.impl;
 
 import com.hotel.dao.UserDao;
 import com.hotel.pojo.Users;

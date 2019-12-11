@@ -8,4 +8,10 @@ public interface IRoundsService {
     List<Rounds> getAllRounds();
 
     Rounds getByIds( int roid);
+
+    boolean saveRounds(Rounds rounds);
+
+    boolean updateRounds(Rounds rounds);
+
+    boolean  deleteRounds(int roid);
 }

@@ -7,6 +7,8 @@ public class Rodetail {
 
     private  int rtid;
 
+    private  int roid;
+
     private  String addr;
 
     private  String remark;
@@ -16,4 +18,6 @@ public class Rodetail {
     private  double  rprice;
 
     private  Rounds rounds;
+
+
 }

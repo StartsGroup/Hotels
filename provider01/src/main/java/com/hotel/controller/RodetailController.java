@@ -3,9 +3,7 @@ package com.hotel.controller;
 import com.hotel.pojo.Rodetail;
 import com.hotel.service.IRodetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,27 @@ public class RodetailController {
     public Rodetail getById(@PathVariable int rtid){
 
         return rodetailService.getByRtids(rtid);
+    }
+
+    @PostMapping("/deleteDetail/{rtid}")
+    public String deleteById(@PathVariable int  rtid){
+        boolean flag= rodetailService.deleteRodetails(rtid);
+        String result=flag ==true ? "success":"fail";
+        return  result;
+    }
+
+    @PostMapping("/saveDetail")
+    public String saveRoundType(@RequestBody Rodetail rodetail){
+        boolean flag=rodetailService.saveRodetail(rodetail);
+        String result=flag ==true ? "success":"fail";
+        return  result;
+    }
+
+
+    @PostMapping("/updateDetail")
+    public String updateRoundType(@RequestBody Rodetail rodetail){
+        boolean flag= rodetailService.updateRodetail(rodetail);
+        String result=flag ==true ? "success":"fail";
+        return  result;
     }
 }

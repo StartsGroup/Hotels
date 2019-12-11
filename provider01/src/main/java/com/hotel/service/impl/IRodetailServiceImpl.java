@@ -23,4 +23,19 @@ public class IRodetailServiceImpl implements IRodetailService {
     public Rodetail getByRtids(int rtid) {
         return rodetailDao.getByRtid(rtid);
     }
+
+    @Override
+    public boolean deleteRodetails(int rtid) {
+        return rodetailDao.deleteRodetail(rtid)>0;
+    }
+
+    @Override
+    public boolean saveRodetail(Rodetail rodetail) {
+        return rodetailDao.saveRodetail(rodetail)>0;
+    }
+
+    @Override
+    public boolean updateRodetail(Rodetail redetail) {
+        return rodetailDao.updateRodetail(redetail)>0;
+    }
 }

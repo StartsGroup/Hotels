@@ -15,7 +15,5 @@ public class Rodetail {
 
     private  double  rprice;
 
-    private int roid;
-
     private  Rounds rounds;
 }

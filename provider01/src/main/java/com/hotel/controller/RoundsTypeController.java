@@ -1,11 +1,9 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.RoundType;
-import com.hotel.service.IRoundTypeService;
+import com.hotel.service.IRoundTypeService;;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,24 @@ public class RoundsTypeController {
     public RoundType getById(@PathVariable int  rotid){
         return roundTypeService.getRoundType(rotid);
     }
+
+    @DeleteMapping("/deleteType/{rotid}")
+    public boolean deleteById(@PathVariable int  rotid){
+        return roundTypeService.deleteRoundType(rotid);
+    }
+
+    @PostMapping("/saveType")
+    public String saveRoundType(@RequestBody RoundType roundType){
+       boolean flag= roundTypeService.saveRoundType(roundType);
+        String result=flag ==true ? "success":"fail";
+        return  result;
+    }
+
+    @PostMapping("/updateType")
+    public String updateRoundType(@RequestBody RoundType roundType){
+        boolean flag= roundTypeService.updateRoundType(roundType);
+        String result=flag ==true ? "success":"fail";
+        return  result;
+    }
+
 }

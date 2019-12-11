@@ -22,4 +22,14 @@ public class IRoomServiceImpl implements IRoomService {
     public Room getRoomByIds(int rid) {
         return roomDao.getRoomById(rid);
     }
+
+    @Override
+    public boolean saveRoom(Room room) {
+        return roomDao.saveRoom(room)>0;
+    }
+
+    @Override
+    public boolean deleteRoom(int rid) {
+        return roomDao.deleteRoom(rid)>0;
+    }
 }

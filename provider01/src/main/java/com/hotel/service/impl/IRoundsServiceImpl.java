@@ -24,4 +24,19 @@ public  class IRoundsServiceImpl  implements IRoundsService {
     public Rounds getByIds(int roid) {
         return roundsDao.getById(roid);
     }
+
+    @Override
+    public boolean saveRounds(Rounds rounds) {
+        return roundsDao.saveRounds(rounds)>0;
+    }
+
+    @Override
+    public boolean updateRounds(Rounds rounds) {
+        return roundsDao.updateRounds(rounds)>0;
+    }
+
+    @Override
+    public boolean deleteRounds(int roid) {
+        return roundsDao.deleteRounds(roid)>0;
+    }
 }

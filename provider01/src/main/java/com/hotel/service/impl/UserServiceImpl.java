@@ -2,14 +2,14 @@ package com.hotel.service.impl;
 
 import com.hotel.dao.UserDao;
 import com.hotel.pojo.Users;
-import com.hotel.service.IUserService;
+import com.hotel.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
     @Override

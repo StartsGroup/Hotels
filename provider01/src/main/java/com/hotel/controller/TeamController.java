@@ -24,10 +24,8 @@ public class TeamController {
         return teamService.login(t);
     }
     @PostMapping("ve")
-    public String saveTeam(@RequestBody Team t){
-        boolean flag=teamService.saveTeam(t);
-        String result=(flag ? "success":"fail");
-        return result;
+    public boolean saveTeam(@RequestBody Team t){
+        return  teamService.saveTeam(t);
     }
     @GetMapping("/all/{tid}")
     public Team getTeamByTid(@PathVariable int tid){

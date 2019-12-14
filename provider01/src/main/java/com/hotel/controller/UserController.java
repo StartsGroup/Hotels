@@ -2,6 +2,10 @@ package com.hotel.controller;
 
 import com.hotel.pojo.Users;
 import com.hotel.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,10 +26,8 @@ public class UserController {
         return userService.login(u);
     }
     @PostMapping("ve")
-    public String saveUsers(@RequestBody Users u){
-        boolean flag=userService.saveUsers(u);
-        String result=(flag ? "success":"fail");
-        return result;
+    public boolean saveUsers(@RequestBody Users u){
+        return userService.saveUsers(u);
     }
     @PostMapping("/delete/{uid}")
     public String deleteUsersByUid(@PathVariable int uid){

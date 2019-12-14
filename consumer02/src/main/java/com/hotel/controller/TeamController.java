@@ -30,10 +30,10 @@ public class TeamController {
         return template.postForObject(url+"/team/login",t,Team.class);
     }
     @PostMapping("/save")
-    public String saveTeam(@RequestBody Team t){
+    public boolean saveTeam(@RequestBody Team t){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return template.postForObject(url+"/team/save",t,String.class);
+        return template.postForObject(url+"/team/ve",t,boolean.class);
     }
     @GetMapping("/all/{tid}")
     public Team getTeamByTid(@PathVariable int tid){

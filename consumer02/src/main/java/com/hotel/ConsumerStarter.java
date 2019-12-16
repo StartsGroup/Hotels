@@ -16,5 +16,5 @@ public class ConsumerStarter {
     public RestTemplate restTemplate(){
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
-    }
-}
+        }
+        }

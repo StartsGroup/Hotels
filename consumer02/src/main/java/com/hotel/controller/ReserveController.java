@@ -31,7 +31,7 @@ public class ReserveController {
     public List<RoomType> getAllRoomById(@PathVariable int rtid){
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
-        return template.getForObject(url+"/roomtype/all"+rtid,List.class);
+        return template.getForObject(url+"/roomtype/all/"+rtid,List.class);
     }
 
     //通过id查询要预定房间的详细信息
@@ -39,7 +39,7 @@ public class ReserveController {
     public List<RoomType> getRoomDeteils(@PathVariable int rid){
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01", false);
         String url = info.getHomePageUrl();
-        return template.getForObject(url+"/roomtype/details"+rid,List.class);
+        return template.getForObject(url+"/roomtype/details/"+rid,List.class);
     }
 
     //预定房间
@@ -55,7 +55,7 @@ public class ReserveController {
     public String optRoom(@PathVariable int rid){
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
-        return template.getForObject(url+"/roomtype/opt"+rid,String.class);
+        return template.getForObject(url+"/roomtype/opt/"+rid,String.class);
 
     }
 

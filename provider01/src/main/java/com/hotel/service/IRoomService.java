@@ -1,7 +1,6 @@
 package com.hotel.service;
 
 import com.hotel.pojo.Room;
-import org.apache.ibatis.annotations.Delete;
 
 import java.util.List;
 

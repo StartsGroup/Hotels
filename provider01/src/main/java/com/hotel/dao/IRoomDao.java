@@ -1,6 +1,8 @@
 package com.hotel.dao;
 
 import com.hotel.pojo.Room;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

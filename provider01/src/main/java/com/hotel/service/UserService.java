@@ -4,7 +4,7 @@ import com.hotel.pojo.Users;
 
 import java.util.List;
 
-public interface IUserService {
+public interface UserService {
 
     List<Users> getAllUsers();
 

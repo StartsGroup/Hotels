@@ -5,7 +5,6 @@ import com.hotel.pojo.Room;
 import com.hotel.pojo.RoomType;
 import com.hotel.service.IRoomService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -25,4 +24,13 @@ public class IRoomServiceImpl implements IRoomService {
         return roomDao.getRoomById(rid);
     }
 
+    @Override
+    public boolean saveRoom(Room room) {
+        return roomDao.saveRoom(room)>0;
+    }
+
+    @Override
+    public boolean deleteRoom(int rid) {
+        return roomDao.deleteRoom(rid)>0;
+    }
 }

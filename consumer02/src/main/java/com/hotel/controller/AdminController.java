@@ -1,6 +1,6 @@
 package com.hotel.controller;
 
-import com.hotel.pojo.Team;
+import com.hotel.pojo.Admin;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.web.bind.annotation.*;
@@ -10,41 +10,41 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/team")
-public class TeamController {
+@RequestMapping("/admin")
+public class AdminController {
     @Resource
     private RestTemplate template;
     @Resource
     private EurekaClient eurekaClient;
 
     @GetMapping("/all")
-    public List<Team> getAllTeam(){
+    public List<Admin> getAllAdmin(){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return template.getForObject(url+"/team/all",List.class);
+        return template.getForObject(url+"/admin/all",List.class);
+    }
+    @GetMapping("/all/{aid}")
+    public Admin getAdminByAid(@PathVariable int aid){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/admin/all/"+aid,Admin.class);
     }
     @PostMapping("/login")
-    public Team login(@RequestBody Team t){
+    public Admin login(@RequestBody Admin a){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return template.postForObject(url+"/team/login",t,Team.class);
+        return template.postForObject(url+"/admin/login",a,Admin.class);
     }
     @PostMapping("/save")
-    public String saveTeam(@RequestBody Team t){
+    public String saveAdmin(@RequestBody Admin a){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return template.postForObject(url+"/team/save",t,String.class);
+        return template.postForObject(url+"/admin/save",a,String.class);
     }
-    @GetMapping("/all/{tid}")
-    public Team getTeamByTid(@PathVariable int tid){
+    @GetMapping("/delete")
+    public String deleteAdminByAid(@PathVariable int aid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return template.getForObject(url+"/team/all/"+tid,Team.class);
-    }
-    @GetMapping("/delete/{tid}")
-    public String deleteTeamByTid(@PathVariable int tid){
-        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
-        String url=info.getHomePageUrl();
-        return template.getForObject(url+"/team/delete/"+tid,String.class);
+        return template.getForObject(url+"/admin/delete/"+aid,String.class);
     }
 }

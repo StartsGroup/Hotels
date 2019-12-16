@@ -23,7 +23,7 @@ public class TeamController {
     public Team login(@RequestBody Team t){
         return teamService.login(t);
     }
-    @PostMapping("/save")
+    @PostMapping("ve")
     public String saveTeam(@RequestBody Team t){
         boolean flag=teamService.saveTeam(t);
         String result=(flag ? "success":"fail");

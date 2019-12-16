@@ -3,9 +3,10 @@ package com.hotel.pojo;
 import lombok.Data;
 
 @Data
-public class Room {
+public class Register {
+    private int rgid;
+    private int uid;
     private int rid;
-    private int rtid;
+    private String rgtimes;
     private String status;
-
 }

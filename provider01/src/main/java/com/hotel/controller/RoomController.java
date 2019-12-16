@@ -3,13 +3,12 @@ package com.hotel.controller;
 import com.hotel.pojo.Room;
 import com.hotel.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/provideroom")
 public class RoomController {
 
     @Autowired
@@ -25,5 +24,14 @@ public class RoomController {
     public Room getById(@PathVariable int  rid){
 
         return roomService.getRoomByIds(rid);
+    }
+    //添加房间
+    @PostMapping("/save")
+    public boolean saveRoom(@RequestBody Room room){
+        return roomService.saveRoom(room);
+    }
+    @GetMapping("/delete/{rid}")
+    public boolean deleteRoom(@PathVariable int rid){
+        return  roomService.deleteRoom(rid);
     }
 }

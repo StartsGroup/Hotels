@@ -1,7 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Users;
-import com.hotel.service.IUserService;
+import com.hotel.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     @Resource
-    private IUserService  userService;
+    private UserService userService;
 
     @GetMapping("/all")
     public List<Users> getAllUsers(){
@@ -21,7 +21,7 @@ public class UserController {
     public Users login(@RequestBody Users u){
         return userService.login(u);
     }
-    @PostMapping("/save")
+    @PostMapping("ve")
     public String saveUsers(@RequestBody Users u){
         boolean flag=userService.saveUsers(u);
         String result=(flag ? "success":"fail");

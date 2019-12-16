@@ -2,6 +2,7 @@ package com.hotel.service.impl;
 
 import com.hotel.dao.IRoomDao;
 import com.hotel.pojo.Room;
+import com.hotel.pojo.RoomType;
 import com.hotel.service.IRoomService;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +24,5 @@ public class IRoomServiceImpl implements IRoomService {
     public Room getRoomByIds(int rid) {
         return roomDao.getRoomById(rid);
     }
+
 }

@@ -10,4 +10,5 @@ public interface IRoomService {
     Room getRoomByIds(int rid);
     boolean saveRoom(Room room);
     boolean deleteRoom(int rid);
+    boolean updateRoomStatus(Room room);
 }

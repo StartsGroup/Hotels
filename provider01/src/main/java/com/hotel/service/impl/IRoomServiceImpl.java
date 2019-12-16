@@ -33,4 +33,9 @@ public class IRoomServiceImpl implements IRoomService {
     public boolean deleteRoom(int rid) {
         return roomDao.deleteRoom(rid)>0;
     }
+
+    @Override
+    public boolean updateRoomStatus(Room room) {
+        return roomDao.updateRoomStatus(room)>0;
+    }
 }

@@ -34,4 +34,8 @@ public class RoomController {
     public boolean deleteRoom(@PathVariable int rid){
         return  roomService.deleteRoom(rid);
     }
+    @PostMapping("/update")
+    public boolean updateRooomStatus(@RequestBody Room room){
+        return roomService.updateRoomStatus(room);
+    }
 }

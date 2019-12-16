@@ -10,13 +10,18 @@ import java.util.List;
 @Mapper
 public interface IRoomDao {
     @Select("select * from room")
-    List<Room>  getAllRoom();
+    List<Room> getAllRoom();
+
     @Select("select * from room where rid=#{rid}")
     Room getRoomById(int rid);
+
     //添加房间
     @Insert("insert into room values(null,#{rtid},#{status})")
     int saveRoom(Room room);
+
     //删除房间
     @Delete("delete from room where rid=#{rid}")
     int deleteRoom(int rid);
+    @Update("update room set status=#{status} where rid=#{rid}")
+    int updateRoomStatus(Room room);
 }

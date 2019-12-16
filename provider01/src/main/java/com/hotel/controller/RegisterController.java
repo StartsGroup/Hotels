@@ -1,7 +1,9 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Register;
+import com.hotel.pojo.Room;
 import com.hotel.service.IRegisterService;
+import com.hotel.service.IRoomService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -12,10 +14,15 @@ import java.util.List;
 public class RegisterController {
     @Resource
     private IRegisterService iRegisterService;
+    @Resource
+    private IRoomService roomService;
     //用户信息的登记
     @PostMapping("/save")
     boolean saveRegister(@RequestBody Register register){
-        return iRegisterService.saveRegister(register);
+        Room room=new Room();
+        room.setRid(register.getRid());
+        room.setStatus(register.getStatus());
+        return iRegisterService.saveRegister(register)==roomService.updateRoomStatus(room);
     }
     //用户登记信息的查看
     @GetMapping("/all")

@@ -9,10 +9,10 @@ import java.util.List;
 
 @Mapper
 public interface IRoomDao {
-    @Select("select * from room")
+    @Select("select * from room,roomtype where room.rtid=roomtype.rtid")
     List<Room> getAllRoom();
 
-    @Select("select * from room where rid=#{rid}")
+    @Select("select * from room,roomtype where rid=#{rid} and room.rtid=roomtype.rtid")
     Room getRoomById(int rid);
 
     //添加房间

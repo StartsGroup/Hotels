@@ -4,6 +4,7 @@ import com.hotel.pojo.Register;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface IRegisterDao {
@@ -22,4 +23,7 @@ public interface IRegisterDao {
     //查询某个人的入住信息
     @Select("select * from register where uid=#{uid} ")
     Register getRegisterById(int uid);
+    //根据uid及rid和入住状态获取入住时间
+    @Select("select rgtimes from register where uid=#{uid} and rid=#{rid} and status='已入住'")
+    String getDate(Register registers);
 }

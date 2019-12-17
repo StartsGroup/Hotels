@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/register")
@@ -43,5 +44,10 @@ public class RegisterController {
     @GetMapping("/ById/{uid}")
     Register getRegisterById(@PathVariable int uid){
         return iRegisterService.getRegisterById(uid);
+    }
+    @GetMapping("/date")
+    @ResponseBody
+    public String getDate( Register register){
+        return  iRegisterService.getDate(register);
     }
 }

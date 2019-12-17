@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class RegisterServiceimpl implements IRegisterService {
     @Resource
@@ -35,5 +37,10 @@ public class RegisterServiceimpl implements IRegisterService {
     @Override
     public Register getRegisterById(int uid) {
         return iRegisterDao.getRegisterById(uid);
+    }
+
+    @Override
+    public String getDate(Register register) {
+        return iRegisterDao.getDate(register);
     }
 }

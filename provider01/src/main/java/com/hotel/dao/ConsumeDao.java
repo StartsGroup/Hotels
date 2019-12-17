@@ -24,4 +24,5 @@ public interface ConsumeDao {
     //按用户查询
     @Select("select cid,consume.uid,consume.rid,uname,consume.pid,pname,price,count,adds,ctime,consume.status from consume,users,products where consume.uid=users.uid and consume.pid=products.pid")
     List<Consume> getAllConsumeByUid(int uid);
+
 }

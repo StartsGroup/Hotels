@@ -1,6 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Room;
+import com.hotel.pojo.dto.Details;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,10 @@ public class RoomController {
     }
 
     @GetMapping("/getRoom/{rid}")
-    public Room getById(@PathVariable int  rid){
+    public Details getById(@PathVariable int  rid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.getForObject(url+"/provideroom/getRoom/"+rid,Room.class);
+        return restTemplate.getForObject(url+"/provideroom/getRoom/"+rid,Details.class);
     }
     //添加房间
     @PostMapping("/save")

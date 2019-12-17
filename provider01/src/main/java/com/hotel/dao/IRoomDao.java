@@ -1,6 +1,7 @@
 package com.hotel.dao;
 
 import com.hotel.pojo.Room;
+import com.hotel.pojo.dto.Details;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.*;
@@ -12,8 +13,8 @@ public interface IRoomDao {
     @Select("select * from room,roomtype where room.rtid=roomtype.rtid")
     List<Room> getAllRoom();
 
-    @Select("select * from room,roomtype where rid=#{rid} and room.rtid=roomtype.rtid")
-    Room getRoomById(int rid);
+    @Select("SELECT room.rid,u.uid,u.uname,t.rtid,t.rtname,r.rgtimes from room room,roomtype t,users u,register r WHERE room.rid=#{rid} and room.rtid=t.rtid and  room.rid=r.rid and r.uid=u.uid ")
+    Details getRoomById(int rid);
 
     //添加房间
     @Insert("insert into room values(null,#{rtid},#{status})")
@@ -24,4 +25,7 @@ public interface IRoomDao {
     int deleteRoom(int rid);
     @Update("update room set status=#{status} where rid=#{rid}")
     int updateRoomStatus(Room room);
+    //获取每种类型的价格
+    @Select("select t.price from roomtype t,room r where t.rtid=r.rtid and r.rid=#{rid}")
+    double getRoomPrice(int rid);
 }

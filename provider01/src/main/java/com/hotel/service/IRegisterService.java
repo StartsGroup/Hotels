@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IRegisterService {
     //用户信息的登记
@@ -19,4 +20,6 @@ public interface IRegisterService {
     boolean updateRegister(Register register);
     //查询某个人的入住信息
     Register getRegisterById(int uid);
+    //获取日期
+    String getDate(Register register);
 }

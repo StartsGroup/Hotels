@@ -1,6 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Room;
+import com.hotel.pojo.dto.Details;
 import com.hotel.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class RoomController {
     }
 
     @GetMapping("/getRoom/{rid}")
-    public Room getById(@PathVariable int  rid){
+    public Details getById(@PathVariable int  rid){
 
         return roomService.getRoomByIds(rid);
     }
@@ -37,5 +38,10 @@ public class RoomController {
     @PostMapping("/update")
     public boolean updateRooomStatus(@RequestBody Room room){
         return roomService.updateRoomStatus(room);
+    }
+    @GetMapping("/price/{rid}")
+    @ResponseBody
+    public double getRoomprice(@PathVariable int rid){
+        return roomService.getRoomPrice(rid);
     }
 }

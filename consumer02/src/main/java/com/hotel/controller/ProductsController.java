@@ -59,4 +59,10 @@ public class ProductsController {
         String url=info.getHomePageUrl();
         return template.getForObject(url+"/pro/delete/"+pid,String.class);
     }
+    @GetMapping("/all3")
+    public List<Products> getAll3Products(){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/pro/all3",List.class);
+    }
 }

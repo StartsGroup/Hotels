@@ -10,6 +10,9 @@ public interface ProductsDao {
     //查询所有
     @Select("select * from products,protype where products.ptid=protype.ptid")
     List<Products> getAllProducts();
+    //查询所有类别
+    @Select("select * from protype ")
+    List<Products> getAll3Products();
     //查询所有2
     @Select("select * from products,protype where products.ptid=protype.ptid")
     List<Products> getAll2Products();

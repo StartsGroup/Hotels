@@ -1,5 +1,6 @@
 package com.hotel.controller;
 
+import com.hotel.pojo.Finance;
 import com.hotel.pojo.Room;
 import com.hotel.pojo.dto.Details;
 import com.netflix.appinfo.InstanceInfo;
@@ -44,5 +45,11 @@ public class RoomController {
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return  restTemplate.getForObject(url+"/provideroom/delete/"+rid,boolean.class);
+    }
+    @PostMapping("/updateStatus")
+    public boolean updateStatus(@RequestBody Finance finance){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return  restTemplate.postForObject(url+"/provideroom/updateStatus",finance,boolean.class);
     }
 }

@@ -27,6 +27,7 @@ public class RodetailController {
         return restTemplate.getForObject(url+"/allDetail",List.class);
     }
 
+
     @GetMapping("/getRodetail/{rtid}")
     public Rodetail getByRoid(@PathVariable int  rtid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
@@ -35,22 +36,25 @@ public class RodetailController {
     }
 
     @PostMapping("/save")
-    public boolean saveRodetails(@RequestBody Rodetail rounds){
+    public String saveRodetails(@RequestBody Rodetail rounds){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.postForObject(url+"/saveDetail",rounds,boolean.class);
-    }
-    @GetMapping("/delete/{rtid}")
-    public boolean deleteRodetails(@PathVariable int rtid){
-        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
-        String url=info.getHomePageUrl();
-        return  restTemplate.getForObject(url+"/deleteDetail/"+rtid,boolean.class);
+        return restTemplate.postForObject(url+"/saveDetail",rounds,String.class);
     }
 
-    @PostMapping("/update")
-    public boolean updateRodetail(@RequestBody Rodetail rounds){
+
+    @GetMapping("/delete/{rtid}")
+    public String deleteRodetails(@PathVariable int rtid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.postForObject(url+"/updateDetail",rounds,boolean.class);
+        return  restTemplate.getForObject(url+"/deleteDetail/"+rtid,String.class);
+    }
+
+
+    @PostMapping("/update")
+    public String updateRodetail(@RequestBody Rodetail rounds){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return restTemplate.postForObject(url+"/updateDetail",rounds,String.class);
     }
 }

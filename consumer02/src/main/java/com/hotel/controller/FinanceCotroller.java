@@ -35,4 +35,10 @@ public class FinanceCotroller {
         String url=info.getHomePageUrl();
         return template.getForObject(url+"/fianace/delete"+fid,boolean.class);
     }
+    @PostMapping("/getDateAndTimes")
+    public Finance getDateAndTimes(@RequestBody Register registe){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/fianace/getDateAndTimes",registe,Finance.class);
+    }
 }

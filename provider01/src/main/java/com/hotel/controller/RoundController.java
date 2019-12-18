@@ -24,7 +24,7 @@ public class RoundController {
         return roundsService.getByIds(roid);
     }
 
-    @PostMapping("/deleteRounds/{roid}")
+    @GetMapping("/deleteRounds/{roid}")
     public String deleteById(@PathVariable int  roid){
         boolean flag= roundsService.deleteRounds(roid);
         String result=flag ==true ? "success":"fail";

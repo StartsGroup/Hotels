@@ -25,7 +25,7 @@ public class RodetailController {
         return rodetailService.getByRtids(rtid);
     }
 
-    @PostMapping("/deleteDetail/{rtid}")
+    @GetMapping("/deleteDetail/{rtid}")
     public String deleteById(@PathVariable int  rtid){
         boolean flag= rodetailService.deleteRodetails(rtid);
         String result=flag ==true ? "success":"fail";

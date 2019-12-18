@@ -34,23 +34,23 @@ public class RoundController {
     }
 
     @PostMapping("/save")
-    public boolean saveRounds(@RequestBody Rounds rounds){
+    public String saveRounds(@RequestBody Rounds rounds){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.postForObject(url+"/saveRounds",rounds,boolean.class);
+        return restTemplate.postForObject(url+"/saveRounds",rounds,String.class);
     }
     @GetMapping("/delete/{roid}")
-    public boolean deleteRounds(@PathVariable int roid){
+    public String deleteRounds(@PathVariable int roid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return  restTemplate.getForObject(url+"/deleteRounds/"+roid,boolean.class);
+        return  restTemplate.getForObject(url+"/deleteRounds/"+roid,String.class);
     }
 
     @PostMapping("/update")
-    public boolean updateRound(@RequestBody Rounds rounds){
+    public String updateRound(@RequestBody Rounds rounds){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.postForObject(url+"/updateRounds",rounds,boolean.class);
+        return restTemplate.postForObject(url+"/updateRounds",rounds,String.class);
     }
 
 }

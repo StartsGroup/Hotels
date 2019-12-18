@@ -27,6 +27,7 @@ public class RodetailController {
         return restTemplate.getForObject(url+"/allDetail",List.class);
     }
 
+
     @GetMapping("/getRodetail/{rtid}")
     public Rodetail getByRoid(@PathVariable int  rtid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
@@ -40,12 +41,15 @@ public class RodetailController {
         String url=info.getHomePageUrl();
         return restTemplate.postForObject(url+"/saveDetail",rounds,String.class);
     }
+
+
     @GetMapping("/delete/{rtid}")
     public String deleteRodetails(@PathVariable int rtid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return  restTemplate.getForObject(url+"/deleteDetail/"+rtid,String.class);
     }
+
 
     @PostMapping("/update")
     public String updateRodetail(@RequestBody Rodetail rounds){

@@ -28,6 +28,7 @@ public class RoundTypeController {
         return restTemplate.getForObject(url+"/allType",List.class);
     }
 
+
     @GetMapping("/getType/{rotid}")
     public RoundType getByRotid(@PathVariable int  rotid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
@@ -35,18 +36,23 @@ public class RoundTypeController {
         return restTemplate.getForObject(url+"/getType/"+rotid,RoundType.class);
     }
 
+
+
     @PostMapping("/save")
     public String saveRodetails(@RequestBody RoundType rounds){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return restTemplate.postForObject(url+"/saveType",rounds,String.class);
     }
+
+
     @GetMapping("/deleteType/{rotid}")
     public String deleteRodetails(@PathVariable int rotid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return  restTemplate.getForObject(url+"/deleteType/"+rotid,String.class);
     }
+
 
     @PostMapping("/update")
     public String updateRodetail(@RequestBody RoundType rounds){

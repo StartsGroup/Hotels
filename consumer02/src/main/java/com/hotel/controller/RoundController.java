@@ -16,6 +16,7 @@ public class RoundController {
 
     @Autowired
     private RestTemplate restTemplate;
+
     @Resource
     private EurekaClient eurekaClient;
 
@@ -39,12 +40,15 @@ public class RoundController {
         String url=info.getHomePageUrl();
         return restTemplate.postForObject(url+"/saveRounds",rounds,String.class);
     }
+
+
     @GetMapping("/delete/{roid}")
     public String deleteRounds(@PathVariable int roid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return  restTemplate.getForObject(url+"/deleteRounds/"+roid,String.class);
     }
+
 
     @PostMapping("/update")
     public String updateRound(@RequestBody Rounds rounds){

@@ -24,6 +24,7 @@ public class RoundController {
         return roundsService.getByIds(roid);
     }
 
+
     @GetMapping("/deleteRounds/{roid}")
     public String deleteById(@PathVariable int  roid){
         boolean flag= roundsService.deleteRounds(roid);
@@ -31,12 +32,14 @@ public class RoundController {
         return  result;
     }
 
+
     @PostMapping("/saveRounds")
     public String saveRoundType(@RequestBody Rounds rounds){
         boolean flag= roundsService.saveRounds(rounds);
         String result=flag ==true ? "success":"fail";
         return  result;
     }
+
 
 
     @PostMapping("/updateRounds")

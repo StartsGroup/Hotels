@@ -35,4 +35,10 @@ public class ConsumeController {
     public List<Consume> getAll2Consume(){
         return consumeService.getAll2Consume();
     }
+    //退房功能的实现
+    @GetMapping("/updateStatus")
+    public boolean updateConsumerStatus(Consume consume){
+        return consumeService.updateStatus(consume);
+
+    }
 }

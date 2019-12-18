@@ -22,4 +22,5 @@ public interface IRegisterService {
     Register getRegisterById(int uid);
     //获取日期
     String getDate(Register register);
+    boolean updateStatus(Register register);
 }

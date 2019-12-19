@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import javax.annotation.Resource;
+import java.rmi.server.UID;
 import java.util.List;
 
 @Mapper
@@ -59,4 +60,7 @@ public interface IRoomTypeDao {
 
     @Update("update users set uprice=#{uprice} where uid=#{uid}")
     int setUserPrice(Users users);
+
+    @Select("select * from users where uid=#{uid}")
+    Users getTelByUid(int uid);
 }

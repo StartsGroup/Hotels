@@ -44,4 +44,7 @@ public interface IRoomTypeService {
 
     //添加用户消费
     boolean setUserPrice(Users users);
+
+    //通过uid查询tel
+    Users getTelByUid(int uid);
 }

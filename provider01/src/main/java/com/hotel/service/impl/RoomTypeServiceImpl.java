@@ -74,4 +74,10 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
         return roomTypeDao.setUserPrice(users)>0;
     }
 
+    @Override
+    public Users getTelByUid(int uid) {
+        return roomTypeDao.getTelByUid(uid);
+    }
+
+
 }

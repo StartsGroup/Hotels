@@ -10,6 +10,9 @@ public interface ProductsDao {
     //查询所有
     @Select("select * from products,protype where products.ptid=protype.ptid")
     List<Products> getAllProducts();
+    //查询所有类别
+    @Select("select * from protype ")
+    List<Products> getAll3Products();
     //查询所有2
     @Select("select * from products,protype where products.ptid=protype.ptid")
     List<Products> getAll2Products();
@@ -26,6 +29,6 @@ public interface ProductsDao {
     @Update("update products set ptid=#{ptid},pname=#{pname},price=#{price},num=#{num},status=#{status} where pid=#{pid}")
     int updateProducts(Products pro);
     //下架商品
-    @Delete("delete from priducts where pid=#{pid}")
+    @Delete("delete from products where pid=#{pid}")
     int deleteProductsByPid(int pid);
 }

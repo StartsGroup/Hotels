@@ -28,4 +28,8 @@ public interface IRoomDao {
     //获取每种类型的价格
     @Select("select t.price from roomtype t,room r where t.rtid=r.rtid and r.rid=#{rid}")
     double getRoomPrice(int rid);
+    //退房的实现
+    @Update("update room set status='空闲' where rid=#{rid}")
+    int updateStatus(int rid);
+
 }

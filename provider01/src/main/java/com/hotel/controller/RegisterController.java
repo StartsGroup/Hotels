@@ -50,4 +50,9 @@ public class RegisterController {
     public String getDate( Register register){
         return  iRegisterService.getDate(register);
     }
+    //退房功能的实现
+    @GetMapping("/updateStstus")
+    public boolean updateRegisterStatus(@RequestBody Register register){
+        return iRegisterService.updateStatus(register);
+    }
 }

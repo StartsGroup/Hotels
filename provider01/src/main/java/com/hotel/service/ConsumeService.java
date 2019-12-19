@@ -14,4 +14,8 @@ public interface ConsumeService {
     List<Consume> getAllConsumeByUid(int uid);
 
     List<Consume> getAll2Consume();
+    //退房功能的实现
+    boolean  updateStatus(Consume consume);
+
+    List<Consume> getComsume(Consume consume);
 }

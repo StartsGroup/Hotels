@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 public class RoundsTypeController {
 
@@ -25,7 +26,7 @@ public class RoundsTypeController {
     }
 
 
-    @PostMapping("/deleteType/{rotid}")
+    @GetMapping("/deleteType/{rotid}")
     public String deleteById(@PathVariable int  rotid){
         boolean flag= roundTypeService.deleteRoundType(rotid);
         String result=flag ==true ? "success":"fail";

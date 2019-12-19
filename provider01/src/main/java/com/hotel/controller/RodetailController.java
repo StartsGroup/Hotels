@@ -13,6 +13,7 @@ public class RodetailController {
     @Autowired
     private IRodetailService rodetailService;
 
+
     @GetMapping("/allDetail")
     public List<Rodetail> getAllRodetail(){
 
@@ -25,12 +26,13 @@ public class RodetailController {
         return rodetailService.getByRtids(rtid);
     }
 
-    @PostMapping("/deleteDetail/{rtid}")
+    @GetMapping("/deleteDetail/{rtid}")
     public String deleteById(@PathVariable int  rtid){
         boolean flag= rodetailService.deleteRodetails(rtid);
         String result=flag ==true ? "success":"fail";
         return  result;
     }
+
 
     @PostMapping("/saveDetail")
     public String saveRoundType(@RequestBody Rodetail rodetail){

@@ -26,4 +26,7 @@ public interface IRegisterDao {
     //根据uid及rid和入住状态获取入住时间
     @Select("select rgtimes from register where uid=#{uid} and rid=#{rid} and status='已入住'")
     String getDate(Register registers);
+    //退房功能的实现
+    @Update("update register set status='已退房' where uid=#{uid} and rid=#{rid}")
+    int updateStatus(Register register);
 }

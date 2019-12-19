@@ -51,7 +51,7 @@ public class UserController {
         return template.getForObject(url+"/users/delete/"+uid,String.class);
     }
     @PostMapping("/update")
-    public String updateUsersByUid(Users u){
+    public String updateUsersByUid(@RequestBody Users u){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/users/update",u,String.class);

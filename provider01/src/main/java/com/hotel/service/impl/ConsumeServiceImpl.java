@@ -36,4 +36,14 @@ public class ConsumeServiceImpl implements ConsumeService {
     public List<Consume> getAll2Consume() {
         return consumeDao.getAll2Consume();
     }
+
+    @Override
+    public boolean updateStatus(Consume consume) {
+        return consumeDao.updateStatus(consume)>0;
+    }
+
+    @Override
+    public List<Consume> getComsume(Consume consume) {
+        return consumeDao.getComsume(consume);
+    }
 }

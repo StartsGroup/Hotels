@@ -41,6 +41,12 @@ public class RegisterServiceimpl implements IRegisterService {
 
     @Override
     public String getDate(Register register) {
+        System.out.println("service"+register);
         return iRegisterDao.getDate(register);
+    }
+
+    @Override
+    public boolean updateStatus(Register register) {
+        return iRegisterDao.updateStatus(register)>0;
     }
 }

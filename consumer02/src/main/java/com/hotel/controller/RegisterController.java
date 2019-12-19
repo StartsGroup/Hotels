@@ -52,4 +52,11 @@ public class RegisterController {
         String url=info.getHomePageUrl();
         return restTemplate.getForObject(url+"/register/ById/"+uid,Register.class);
     }
+    @PostMapping("/date")
+    @ResponseBody
+    public String getDate(@RequestBody Register register){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return restTemplate.postForObject(url+"/register/date",register,String.class);
+    }
 }

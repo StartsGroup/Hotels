@@ -22,12 +22,18 @@ public interface ProductsDao {
     //按类别查询
     @Select("select * from products,protype where products.ptid=protype.ptid and products.ptid=#{products.ptid}")
     List<Products> getProductsByPtid(int ptid);
+    //查询所有类别
+    @Select("select * from protype ")
+    List<Products> getAllTypes();
     //按ID查询
     @Select("select * from products,protype where products.ptid=protype.ptid and pid=#{pid}")
     Products getProductsByPid(int pid);
     //修改信息
     @Update("update products set ptid=#{ptid},pname=#{pname},price=#{price},num=#{num},status=#{status} where pid=#{pid}")
     int updateProducts(Products pro);
+    //修改数量
+    @Update("update products set num=#{num} where pid=#{pid}")
+    int updateNum(Products pro);
     //下架商品
     @Delete("delete from products where pid=#{pid}")
     int deleteProductsByPid(int pid);

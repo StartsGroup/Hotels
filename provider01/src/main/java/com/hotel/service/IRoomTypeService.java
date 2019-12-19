@@ -4,6 +4,7 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
+import com.hotel.pojo.dto.TypeRoom;
 
 import java.util.List;
 
@@ -11,6 +12,9 @@ public interface IRoomTypeService {
 
     //房间的所有类别
     List<RoomType> getAllRoomType();
+
+    //添加房间类型
+    boolean saveRoomType(RoomType rt);
 
     //通过id查询空闲房间
     List<RoomType> getAllRoomById(int rtid);
@@ -44,4 +48,9 @@ public interface IRoomTypeService {
 
     //添加用户消费
     boolean setUserPrice(Users users);
+
+    TypeRoom getTypeRoom(int rtid);
+
+    //通过uid查询tel
+    Users getTelByUid(int uid);
 }

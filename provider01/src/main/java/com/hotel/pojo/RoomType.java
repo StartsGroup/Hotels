@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -18,6 +20,7 @@ public class RoomType {
     private int firsttime;
     private double firstprice;
     private String remark;
+    private double deposit;
     private String status;
     private int reid;
     private int uid;

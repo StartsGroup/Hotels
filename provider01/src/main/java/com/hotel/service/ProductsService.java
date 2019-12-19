@@ -20,5 +20,9 @@ public interface ProductsService {
 
     boolean deleteProductsByPid(int pid);
 
+    List<Products> getAllTypes();
+
     List<Products> getAll3Products();
+
+    boolean updateNum(Products pro);
 }

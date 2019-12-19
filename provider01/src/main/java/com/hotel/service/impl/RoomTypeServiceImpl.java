@@ -5,6 +5,7 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
+import com.hotel.pojo.dto.TypeRoom;
 import com.hotel.service.IRoomTypeService;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,12 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
     @Override
     public List<RoomType> getAllRoomType() {
         return roomTypeDao.getAllRoomType();
+    }
+
+    //添加房间类型
+    @Override
+    public boolean saveRoomType(RoomType rt) {
+        return roomTypeDao.saveRoomType(rt)>0;
     }
 
     //通过id查询空闲房间
@@ -77,6 +84,17 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
     @Override
     public boolean setUserPrice(Users users) {
         return roomTypeDao.setUserPrice(users)>0;
+    }
+
+    @Override
+    public Users getTelByUid(int uid) {
+        return roomTypeDao.getTelByUid(uid);
+    }
+
+
+    @Override
+    public TypeRoom getTypeRoom(int rtid) {
+        return roomTypeDao.getTypeRoom(rtid);
     }
 
 }

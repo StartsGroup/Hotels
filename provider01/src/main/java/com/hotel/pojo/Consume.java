@@ -13,6 +13,7 @@ public class Consume {
     private double price;
     private int count;
     private double adds;
+    private int num;
     private String ctime;
     private String status;
 }

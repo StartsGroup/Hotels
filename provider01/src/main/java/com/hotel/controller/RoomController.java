@@ -6,13 +6,14 @@ import com.hotel.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 @RequestMapping("/provideroom")
 public class RoomController {
 
-    @Autowired
+    @Resource
     private IRoomService roomService;
 
     @GetMapping("/allRoom")

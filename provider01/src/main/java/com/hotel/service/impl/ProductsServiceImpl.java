@@ -46,4 +46,9 @@ public class ProductsServiceImpl implements ProductsService {
     public boolean deleteProductsByPid(int pid) {
         return productsDao.deleteProductsByPid(pid)>0;
     }
+
+    @Override
+    public List<Products> getAllTypes() {
+        return productsDao.getAllTypes();
+    }
 }

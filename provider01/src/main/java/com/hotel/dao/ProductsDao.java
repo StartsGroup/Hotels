@@ -19,6 +19,9 @@ public interface ProductsDao {
     //按类别查询
     @Select("select * from products,protype where products.ptid=protype.ptid and products.ptid=#{products.ptid}")
     List<Products> getProductsByPtid(int ptid);
+    //查询所有类别
+    @Select("select * from protype ")
+    List<Products> getAllTypes();
     //按ID查询
     @Select("select * from products,protype where products.ptid=protype.ptid and pid=#{pid}")
     Products getProductsByPid(int pid);

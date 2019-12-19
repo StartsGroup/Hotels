@@ -47,4 +47,8 @@ public class ProductsController {
         String result=(flag ? "success":"fail");
         return result;
     }
+    @GetMapping("/alltypes")
+    public List<Products> getAllTypes(){
+        return productsService.getAllTypes();
+    }
 }

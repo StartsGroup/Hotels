@@ -17,7 +17,7 @@ public interface IRoomDao {
     Details getRoomById(int rid);
 
     //添加房间
-    @Insert("insert into room values(null,#{rtid},#{status})")
+    @Insert("insert into room values(#{rid},#{rtid},'空闲')")
     int saveRoom(Room room);
 
     //删除房间

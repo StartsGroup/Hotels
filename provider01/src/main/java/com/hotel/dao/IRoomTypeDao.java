@@ -18,6 +18,10 @@ public interface IRoomTypeDao {
     @Select("select * from roomtype")
     List<RoomType> getAllRoomType();
 
+    //添加房间类型
+    @Insert("insert into roomtype values(null,#{rtname},#{price},#{cash},#{longs},#{firsttime},#{firstprice},#{remark},#{deposit})")
+    int saveRoomType(RoomType rt);
+
     //通过id查询空闲房间
     @Select("select * from roomtype,room where status='空闲' and roomtype.rtid = #{rtid} and room.rtid=#{rtid}")
     List<RoomType> getAllRoomById(int rtid);

@@ -40,7 +40,7 @@ public class UserController {
         return userService.getUsersByUid(uid);
     }
     @PostMapping("/update")
-    public String updateUsersByUid(Users u){
+    public String updateUsersByUid(@RequestBody Users u){
         boolean flag=userService.updateUsersByUid(u);
         String result=(flag ? "success":"fail");
         return result;

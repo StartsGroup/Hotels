@@ -27,6 +27,14 @@ public class ReserveController {
         return template.getForObject(url+"/roomtype/all",List.class);
     }
 
+    //添加房间类型
+    @PostMapping("/save")
+    public String saveRoomType(@RequestBody RoomType rt){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/roomtype/save",rt,String.class);
+    }
+
     //通过id查询空闲房间
     @GetMapping("/all/{rtid}")
     public List<RoomType> getAllRoomById(@PathVariable int rtid){

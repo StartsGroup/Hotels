@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 @RequestMapping("/roomtype")
 public class ReserveController {
 
-    @Autowired
+    @Resource
     private IRoomTypeService roomTypeService;
 
     @Autowired
@@ -31,6 +32,14 @@ public class ReserveController {
     @GetMapping("/all")
     public List<RoomType> getAllRoomType() {
         return roomTypeService.getAllRoomType();
+    }
+
+    //添加房间类型
+    @PostMapping("/save")
+    public String saveRoomType(@RequestBody RoomType rt){
+        boolean flag=roomTypeService.saveRoomType(rt);
+        String result=(flag ? "success":"fail");
+        return result;
     }
 
     //通过id查询空闲房间

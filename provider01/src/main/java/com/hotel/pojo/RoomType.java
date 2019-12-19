@@ -20,6 +20,7 @@ public class RoomType {
     private int firsttime;
     private double firstprice;
     private String remark;
+    private double deposit;
     private String status;
     private int reid;
     private int uid;

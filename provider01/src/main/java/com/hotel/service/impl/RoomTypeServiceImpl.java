@@ -24,6 +24,12 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
         return roomTypeDao.getAllRoomType();
     }
 
+    //添加房间类型
+    @Override
+    public boolean saveRoomType(RoomType rt) {
+        return roomTypeDao.saveRoomType(rt)>0;
+    }
+
     //通过id查询空闲房间
     @Override
     public List<RoomType> getAllRoomById(int rtid) {

@@ -13,6 +13,9 @@ public interface IRoomTypeService {
     //房间的所有类别
     List<RoomType> getAllRoomType();
 
+    //添加房间类型
+    boolean saveRoomType(RoomType rt);
+
     //通过id查询空闲房间
     List<RoomType> getAllRoomById(int rtid);
 

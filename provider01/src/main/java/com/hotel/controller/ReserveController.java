@@ -48,6 +48,13 @@ public class ReserveController {
     @PostMapping("/reserve")
     public String reserveRoom(@RequestBody Reserve reserve) {
         int rid = reserve.getRid();
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //获取String类型的时间
+        String createdate = sdf.format(date);
+        reserve.setRtimes(createdate);
+
         //预定表中插入数据
         boolean flag = roomTypeService.reserveroom(reserve);
         //更新房间状态

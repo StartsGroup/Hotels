@@ -2,6 +2,7 @@ package com.hotel.controller;
 
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
+import com.hotel.pojo.dto.TypeRoom;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.web.bind.annotation.*;
@@ -56,8 +57,11 @@ public class ReserveController {
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
         return template.getForObject(url+"/roomtype/opt/"+rid,String.class);
-
     }
-
-
+    @GetMapping("/getTypeRoom/{rtid}")
+    public TypeRoom getTypeRoom(@PathVariable int rtid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/getTypeRoom/"+rtid,TypeRoom.class);
+    }
 }

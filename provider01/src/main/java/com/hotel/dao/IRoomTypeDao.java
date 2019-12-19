@@ -4,10 +4,9 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import com.hotel.pojo.dto.TypeRoom;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import javax.annotation.Resource;
 import java.rmi.server.UID;
@@ -56,6 +55,12 @@ public interface IRoomTypeDao {
 
     @Update("update users set uprice=#{uprice} where uid=#{uid}")
     int setUserPrice(Users users);
+    // 房间类型的详细信息
+    @Select("select * from roomtype where rtid=#{rtid}")
+    @Results({
+            @Result(id =true,property = "rtid",column = "rtid"),
+            @Result(property = "roomList" ,column="rtid" ,many=@Many(select="com.hotel.dao.IRoomDao.getAllroom", fetchType = FetchType.LAZY))})
+    TypeRoom getTypeRoom(int rtid);
 
     @Select("select * from users where uid=#{uid}")
     Users getTelByUid(int uid);

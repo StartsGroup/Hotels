@@ -1,13 +1,16 @@
-package com.hotel.pojo;
+package com.hotel.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.hotel.pojo.Room;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
-public class Room {
-    private int rid;
+public class TypeRoom {
     private int rtid;
+    private int rid;
     private String rtname;
     private double price;
     private double cash;
@@ -15,7 +18,11 @@ public class Room {
     private int firsttime;
     private double firstprice;
     private String remark;
-    private double deposit;
     private String status;
-
+    private int reid;
+    private int uid;
+    private String rtimes;
+    private String atatus;
+    private double deposit;
+    private List<Room> roomList;
 }

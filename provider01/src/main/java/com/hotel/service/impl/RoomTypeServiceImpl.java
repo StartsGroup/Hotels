@@ -5,6 +5,7 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
+import com.hotel.pojo.dto.TypeRoom;
 import com.hotel.service.IRoomTypeService;
 import org.springframework.stereotype.Service;
 
@@ -79,5 +80,10 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
         return roomTypeDao.getTelByUid(uid);
     }
 
+
+    @Override
+    public TypeRoom getTypeRoom(int rtid) {
+        return roomTypeDao.getTypeRoom(rtid);
+    }
 
 }

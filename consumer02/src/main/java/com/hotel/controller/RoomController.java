@@ -47,6 +47,7 @@ public class RoomController {
         return  restTemplate.getForObject(url+"/provideroom/delete/"+rid,boolean.class);
     }
     @PostMapping("/updateStatus")
+    @ResponseBody
     public boolean updateStatus(@RequestBody Finance finance){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();

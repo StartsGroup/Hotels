@@ -21,7 +21,7 @@ public interface IRegisterDao {
     @Update("update register set status=#{status} where uid=#{uid}")
     int updateRegister(Register register);
     //查询某个人的入住信息
-    @Select("select * from register where uid=#{uid} ")
+    @Select("select * from register where uid=#{uid}and status='已入住' ")
     Register getRegisterById(int uid);
     //根据uid及rid和入住状态获取入住时间
     @Select("select rgtimes from register where uid=#{uid} and rid=#{rid} and status='已入住'")

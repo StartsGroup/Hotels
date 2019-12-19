@@ -4,6 +4,7 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
+import com.hotel.pojo.dto.TypeRoom;
 import com.hotel.quartz.Countdown;
 import com.hotel.service.IRoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,6 +122,8 @@ public class ReserveController {
         else
             return null;
     }
-
-
+    @GetMapping("/getTypeRoom/{rtid}")
+    public TypeRoom getTypeRoom(@PathVariable int rtid){
+       return roomTypeService.getTypeRoom(rtid);
+    }
 }

@@ -55,4 +55,8 @@ public interface IRoomTypeDao {
 
     @Update("update users set uprice=#{uprice} where uid=#{uid}")
     int setUserPrice(Users users);
+    //查询用户预订信息
+    @Select("select * from reserve where uid=#{uid}")
+    Reserve selectresByUid(int uid);
+
 }

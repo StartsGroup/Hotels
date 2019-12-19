@@ -17,7 +17,7 @@ public interface ProductsDao {
     @Select("select * from products,protype where products.ptid=protype.ptid")
     List<Products> getAll2Products();
     //添加
-    @Insert("insert into products values(null,#{ptid},#{pname},#{price},#{num},status='可点')")
+    @Insert("insert into products values(null,#{ptid},#{pname},#{price},#{num},'可点')")
     int saveProducts(Products pro);
     //按类别查询
     @Select("select * from products,protype where products.ptid=protype.ptid and products.ptid=#{products.ptid}")

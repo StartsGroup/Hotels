@@ -35,6 +35,11 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
     }
 
     @Override
+    public Reserve selectresByUid(int uid) {
+        return roomTypeDao.selectresByUid(uid);
+    }
+
+    @Override
     public boolean reserveroom(Reserve R) {
         return roomTypeDao.reserveroom(R)>0;
     }

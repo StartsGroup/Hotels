@@ -18,6 +18,9 @@ public interface IRoomTypeService {
     //通过id查询要预定房间的详细信息
     List<RoomType> getRoomDeteils(int rid);
 
+    //查询用户预订信息
+    Reserve selectresByUid(int uid);
+
     //预定房间
     boolean reserveroom(Reserve R);
 

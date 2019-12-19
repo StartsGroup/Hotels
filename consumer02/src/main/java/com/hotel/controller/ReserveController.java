@@ -58,6 +58,13 @@ public class ReserveController {
         return template.getForObject(url+"/roomtype/opt/"+rid,String.class);
 
     }
+    //查询用户预订信息
+    @GetMapping("/get/{uid}")
+    public Reserve selectresByUid(@PathVariable int uid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/get/"+uid,Reserve.class);
+    }
 
 
 }

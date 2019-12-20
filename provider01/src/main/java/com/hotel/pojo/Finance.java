@@ -11,6 +11,8 @@ public class Finance {
     private int fid;
     private int uid;
     private int rid;
+    private String uname;
+    private String allprice;
     private String ftimes;
     private double fprice;
 

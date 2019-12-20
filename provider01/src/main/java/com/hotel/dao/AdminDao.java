@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface AdminDao {
     //查询所有员工
-    @Select("select * from admin,adtype where admin.atid=adtype.atid")
+    @Select("select * from admin,adtype where admin.atid=adtype.atid and aid > 1")
     List<Admin> getAllAdmin();
     //按ID查询
     @Select("select * from admin,adtype where admin.atid=adtype.atid and aid=#{aid}")

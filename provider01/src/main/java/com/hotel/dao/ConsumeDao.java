@@ -23,7 +23,7 @@ public interface ConsumeDao {
     @Insert("insert into consume values(null,#{rid},#{uid},#{pid},#{count},#{adds},#{ctime},'未结算')")
     int saveConsume(Consume c);
     //按用户查询
-    @Select("select cid,consume.uid,consume.rid,uname,consume.pid,pname,price,count,adds,ctime,consume.status from consume,users,products where consume.uid=users.uid and consume.pid=products.pid")
+    @Select("select cid,consume.uid,consume.rid,uname,consume.pid,pname,price,count,adds,ctime,consume.status from consume,users,products where consume.uid=users.uid and consume.pid=products.pid and users.uid=#{uid}")
     //退房status的改变
     List<Consume> getAllConsumeByUid(int uid);
     @Update("update consume set status='已结算' where uid=#{uid} and rid=#{rid}")

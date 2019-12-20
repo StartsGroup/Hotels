@@ -26,4 +26,8 @@ public interface UserDao {
     //修改信息
     @Update("update users set uname=#{uname},upassword=#{upassword},userid=#{userid},tel=#{tel},uprice=#{uprice} where uid=#{uid}")
     int updateUsersByUid(Users u);
+    //按姓名查
+    @Select("select * from users where uname=#{uname}")
+    Users getUsersByUname(String uname);
+
 }

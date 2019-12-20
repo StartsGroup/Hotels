@@ -38,6 +38,12 @@ public class UserController {
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/users/ve",u,boolean.class);
     }
+    @GetMapping("/get/{uname}")
+    public Users getUsersByUname(@PathVariable String uname){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/users/get/"+uname,Users.class);
+    }
     @GetMapping("/all/{uid}")
     public Users getUsersByUid(@PathVariable int uid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);

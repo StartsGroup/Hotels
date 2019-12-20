@@ -83,10 +83,10 @@ public class ReserveController {
 
     //查询用户总消费信息列表
     @GetMapping("/allList/{uid}")
-    public List<Finance> getAllListByUid(@PathVariable int uid){
+    public Finance getAllListByUid(@PathVariable int uid){
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
-        return template.getForObject(url+"/roomtype/allList/"+uid,List.class);
+        return template.getForObject(url+"/roomtype/allList/"+uid,Finance.class);
     }
 
     //查询所有人消费列表

@@ -98,7 +98,7 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
 
 
     @Override
-    public List<Finance> getAllListByUid(int uid) {
+    public Finance getAllListByUid(int uid) {
         return roomTypeDao.getAllListByUid(uid);
     }
 

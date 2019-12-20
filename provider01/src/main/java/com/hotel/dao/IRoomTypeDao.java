@@ -78,7 +78,7 @@ public interface IRoomTypeDao {
 
     //根据id查询用户总消费信息列表
     @Select("select f.*,u.uname,sum(f.fprice) allprice  from finance f,users u where u.uid=f.uid and f.uid=#{uid}")
-    List<Finance> getAllListByUid(int uid);
+    Finance getAllListByUid(int uid);
 
     //查询所有人消费列表
     @Select("select f.*,u.uname from finance f,users u where u.uid=f.uid")

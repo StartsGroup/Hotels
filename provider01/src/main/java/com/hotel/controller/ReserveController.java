@@ -143,7 +143,7 @@ public class ReserveController {
 
     //查询用户总消费信息列表
     @GetMapping("/allList/{uid}")
-    public List<Finance> getAllListByUid(@PathVariable int uid){
+    public Finance getAllListByUid(@PathVariable int uid){
         return roomTypeService.getAllListByUid(uid);
     }
 

@@ -135,4 +135,10 @@ public class ReserveController {
     public TypeRoom getTypeRoom(@PathVariable int rtid){
        return roomTypeService.getTypeRoom(rtid);
     }
+    //查询用户预订信息
+    @GetMapping("/get/{uid}")
+    public Reserve selectresByUid(@PathVariable int uid){
+        return roomTypeService.selectresByUid(uid);
+    }
+
 }

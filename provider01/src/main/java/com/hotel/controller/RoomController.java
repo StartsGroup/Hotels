@@ -20,7 +20,7 @@ import java.util.StringTokenizer;
 @RequestMapping("/provideroom")
 public class RoomController {
 
-    @Autowired
+    @Resource
     private IRoomService roomService;
     @Resource
     private IFinaneService iFinaneService;

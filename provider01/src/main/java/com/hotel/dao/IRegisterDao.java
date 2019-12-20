@@ -12,6 +12,7 @@ public interface IRegisterDao {
     @Insert("insert into register values(null,#{uid},#{rid},#{rgtimes},#{status})")
     int saveRegister(Register register);
     //用户登记信息的查看
+    @Results({@Result(column = "uid",property = "users",one =@One(select = "com.hotel.dao.UserDao.getUsersByUid")), @Result(column = "rid",property = "room",one =@One(select = "com.hotel.dao.IRoomDao.getRoomByIdRegister"))})
     @Select("select * from register")
     List<Register> getAllRegister();
     //用户登记信息的删除
@@ -21,7 +22,7 @@ public interface IRegisterDao {
     @Update("update register set status=#{status} where uid=#{uid}")
     int updateRegister(Register register);
     //查询某个人的入住信息
-    @Select("select * from register where uid=#{uid}and status='已入住' ")
+    @Select("select * from register where uid=#{uid} and status='已入住' ")
     Register getRegisterById(int uid);
     //根据uid及rid和入住状态获取入住时间
     @Select("select rgtimes from register where uid=#{uid} and rid=#{rid} and status='已入住'")

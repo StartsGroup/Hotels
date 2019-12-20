@@ -16,6 +16,10 @@ public interface IRoomDao {
     @Select("SELECT room.rid,u.uid,u.uname,t.rtid,t.rtname,r.rgtimes from room room,roomtype t,users u,register r WHERE room.rid=#{rid} and room.rtid=t.rtid and  room.rid=r.rid and r.uid=u.uid and r.status='已入住'")
     Details getRoomById(int rid);
 
+    @Results({@Result(column = "rtid",property = "roomType",one =@One(select = "com.hotel.dao.IRoomTypeDao.getUserIdRe"))})
+    @Select("select * from room where rid=#{rid}")
+    Room getRoomByIdRegister(int rid);
+
     //添加房间
     @Insert("insert into room values(#{rid},#{rtid},'空闲')")
     int saveRoom(Room room);

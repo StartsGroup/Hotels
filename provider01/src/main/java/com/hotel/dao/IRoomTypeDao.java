@@ -50,6 +50,9 @@ public interface IRoomTypeDao {
     @Select("select uid from reserve where rid=#{rid}")
     int getUserId(int rid);
 
+    @Select("select * from roomtype where rtid=#{rtid}")
+    RoomType getUserIdRe(int rid);
+
     @Select("select deposit from roomtype,room where room.rtid=roomtype.rtid and rid=#{rid}")
     double getFpr(int rid);
 
@@ -59,6 +62,10 @@ public interface IRoomTypeDao {
 
     @Update("update users set uprice=#{uprice} where uid=#{uid}")
     int setUserPrice(Users users);
+    //查询用户预订信息
+    @Select("select * from reserve where uid=#{uid}")
+    Reserve selectresByUid(int uid);
+
     // 房间类型的详细信息
     @Select("select * from roomtype where rtid=#{rtid}")
     @Results({

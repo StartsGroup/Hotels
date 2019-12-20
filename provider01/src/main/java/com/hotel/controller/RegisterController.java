@@ -1,5 +1,6 @@
 package com.hotel.controller;
 
+import com.alibaba.druid.sql.visitor.functions.Substring;
 import com.hotel.pojo.Register;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.Room;
@@ -28,11 +29,10 @@ public class RegisterController {
         Room room=new Room();
         room.setRid(register.getRid());
         room.setStatus(register.getStatus());
-        Register register1=register;
-        register1.setRgtimes(new String(register.getRgtimes()+"  "));
+        System.out.println(register.getRgtimes());
         reserveService.updateServers(register.getRid());
-        return iRegisterService.saveRegister(register1)==roomService.updateRoomStatus(room);
-    }
+        return iRegisterService.saveRegister(register)==roomService.updateRoomStatus(room);
+     }
     //用户登记信息的查看
     @GetMapping("/all")
     List<Register> getAllRegister(){

@@ -16,7 +16,7 @@ public interface IRodetailDao {
     Rodetail getByRtid(int rtid);
 
 
-    @Insert("insert into rodetail (rtid,roid,addr,remark,retime,rprice) values(#{rtid},#{roid},#{addr},#{remark},#{retime},#{rprice})")
+    @Insert("insert into rodetail (rtid,roid,addr,remark,retime,rprice) values(null,#{roid},#{addr},#{remark},#{retime},#{rprice})")
     int saveRodetail(Rodetail rodetail);
 
     @Delete("delete from rodetail  where rtid=#{rtid}")

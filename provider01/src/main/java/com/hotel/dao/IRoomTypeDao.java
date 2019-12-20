@@ -46,6 +46,9 @@ public interface IRoomTypeDao {
     @Select("select uid from reserve where rid=#{rid}")
     int getUserId(int rid);
 
+    @Select("select * from roomtype where rtid=#{rtid}")
+    RoomType getUserIdRe(int rid);
+
     @Select("select deposit from roomtype,room where room.rtid=roomtype.rtid and rid=#{rid}")
     double getFpr(int rid);
 

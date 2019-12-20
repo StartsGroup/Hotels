@@ -12,6 +12,7 @@ public interface IRegisterDao {
     @Insert("insert into register values(null,#{uid},#{rid},#{rgtimes},#{status})")
     int saveRegister(Register register);
     //用户登记信息的查看
+    @Results({@Result(column = "uid",property = "users",one =@One(select = "com.hotel.dao.UserDao.getUsersByUid")), @Result(column = "rid",property = "room",one =@One(select = "com.hotel.dao.IRoomDao.getRoomByIdRegister"))})
     @Select("select * from register")
     List<Register> getAllRegister();
     //用户登记信息的删除

@@ -9,4 +9,6 @@ public class Register {
     private int rid;
     private String rgtimes;
     private String status;
+    private  Users users;
+    private  Room room;
 }

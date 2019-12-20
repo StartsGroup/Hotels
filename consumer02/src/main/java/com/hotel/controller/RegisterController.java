@@ -20,9 +20,11 @@ public class RegisterController {
     //用户信息的登记
     @PostMapping("/save")
     boolean saveRegister(@RequestBody Register register){
+        Register register1=register;
+        register1.setRgtimes(register.getRgtimes().substring(0,10));
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
-        return restTemplate.postForObject(url+"/register/save",register,boolean.class);
+        return restTemplate.postForObject(url+"/register/save",register1,boolean.class);
     }
     //用户登记信息的查看
     @GetMapping("/all")

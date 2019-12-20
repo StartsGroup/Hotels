@@ -25,4 +25,6 @@ public interface IRodetailDao {
 
     @Update("update rodetail  set roid=#{roid},addr=#{addr},remark=#{remark},retime=#{retime},rprice=#{rprice} where rtid=#{rtid}")
     int updateRodetail(Rodetail rodetail);
+
+
 }

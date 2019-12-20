@@ -45,9 +45,9 @@ public class RegisterController {
     Register getRegisterById(@PathVariable int uid){
         return iRegisterService.getRegisterById(uid);
     }
-    @GetMapping("/date")
+    @PostMapping("/date")
     @ResponseBody
-    public String getDate( Register register){
+    public String getDate(@RequestBody Register register){
         return  iRegisterService.getDate(register);
     }
     //退房功能的实现

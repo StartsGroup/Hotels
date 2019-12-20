@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class MessagesServiceImpl implements IMessagesService {
@@ -19,5 +20,10 @@ public class MessagesServiceImpl implements IMessagesService {
     public boolean addMessages(Messages messages) {
         System.out.println(messages+"0000000000000000000");
         return messagesDao.addMessages(messages)>0;
+    }
+
+    @Override
+    public List<Messages> getMessages(int rtid) {
+        return messagesDao.getMessages(rtid);
     }
 }

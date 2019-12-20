@@ -4,12 +4,12 @@ import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import com.hotel.pojo.dto.TypeRoom;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import javax.annotation.Resource;
+import java.rmi.server.UID;
 import java.util.List;
 
 @Mapper
@@ -17,6 +17,10 @@ public interface IRoomTypeDao {
     //查询所有房间类型
     @Select("select * from roomtype")
     List<RoomType> getAllRoomType();
+
+    //添加房间类型
+    @Insert("insert into roomtype values(null,#{rtname},#{price},#{cash},#{longs},#{firsttime},#{firstprice},#{remark},#{deposit})")
+    int saveRoomType(RoomType rt);
 
     //通过id查询空闲房间
     @Select("select * from roomtype,room where status='空闲' and roomtype.rtid = #{rtid} and room.rtid=#{rtid}")
@@ -58,4 +62,17 @@ public interface IRoomTypeDao {
 
     @Update("update users set uprice=#{uprice} where uid=#{uid}")
     int setUserPrice(Users users);
+    //查询用户预订信息
+    @Select("select * from reserve where uid=#{uid}")
+    Reserve selectresByUid(int uid);
+
+    // 房间类型的详细信息
+    @Select("select * from roomtype where rtid=#{rtid}")
+    @Results({
+            @Result(id =true,property = "rtid",column = "rtid"),
+            @Result(property = "roomList" ,column="rtid" ,many=@Many(select="com.hotel.dao.IRoomDao.getAllroom", fetchType = FetchType.LAZY))})
+    TypeRoom getTypeRoom(int rtid);
+
+    @Select("select * from users where uid=#{uid}")
+    Users getTelByUid(int uid);
 }

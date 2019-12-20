@@ -47,4 +47,18 @@ public class ProductsController {
         String result=(flag ? "success":"fail");
         return result;
     }
+    @GetMapping("/alltypes")
+    public List<Products> getAllTypes(){
+        return productsService.getAllTypes();
+    }
+    @GetMapping("/all3")
+    public List<Products> getAll3Products(){
+        return productsService.getAll3Products();
+    }
+    @PostMapping("/updatenum")
+    public String updateNum(@RequestBody Products pro){
+        boolean flag=productsService.updateNum(pro);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
 }

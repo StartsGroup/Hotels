@@ -2,6 +2,7 @@ package com.hotel.controller;
 
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
+import com.hotel.pojo.dto.TypeRoom;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,14 @@ public class ReserveController {
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return template.getForObject(url+"/roomtype/all",List.class);
+    }
+
+    //添加房间类型
+    @PostMapping("/save")
+    public String saveRoomType(@RequestBody RoomType rt){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/roomtype/save",rt,String.class);
     }
 
     //通过id查询空闲房间
@@ -56,7 +65,19 @@ public class ReserveController {
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
         return template.getForObject(url+"/roomtype/opt/"+rid,String.class);
-
+    }
+    @GetMapping("/getTypeRoom/{rtid}")
+    public TypeRoom getTypeRoom(@PathVariable int rtid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/getTypeRoom/"+rtid,TypeRoom.class);
+    }
+    //查询用户预订信息
+    @GetMapping("/get/{uid}")
+    public Reserve selectresByUid(@PathVariable int uid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/get/"+uid,Reserve.class);
     }
 
 

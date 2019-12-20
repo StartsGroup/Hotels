@@ -19,4 +19,7 @@ public interface UserService {
     boolean updateUsersByUid(Users u);
 
     Users getUsersByUname(String uname);
+
+    //修改密码，通过uid
+    boolean updateUserPass(Users u);
 }

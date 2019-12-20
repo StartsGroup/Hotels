@@ -30,4 +30,8 @@ public interface UserDao {
     @Select("select * from users where uname=#{uname}")
     Users getUsersByUname(String uname);
 
+    //修改密码，通过uid
+    @Update("update users set upassword=#{upassword} where uid=#{uid}")
+    int updateUserPass(Users u);
+
 }

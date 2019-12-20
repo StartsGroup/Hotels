@@ -1,6 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Admin;
+import com.hotel.pojo.Adtype;
 import com.hotel.service.AdminService;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,27 @@ public class AdminController {
         boolean flag=adminService.deleteAdminByAid(aid);
         String result=(flag ? "success":"fail");
         return result;
+    }
+
+    //修改用户信息
+    @PostMapping("/update")
+    public String updateAdminByAid(@RequestBody Admin a){
+        boolean flag=adminService.updateAdmin(a);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
+
+    //根据id修改用户信息
+    @PostMapping("/updatepass")
+    public String updateAdminPassByAid(@RequestBody Admin a){
+        boolean flag=adminService.updateAdminPassByAid(a);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
+
+    ////查询所有角色
+    @GetMapping("/getalladtype")
+    public List<Adtype> getAllAdtype(){
+        return adminService.getAllAdtype();
     }
 }

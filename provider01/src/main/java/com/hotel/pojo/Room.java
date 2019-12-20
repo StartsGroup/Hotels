@@ -19,4 +19,5 @@ public class Room {
     private String status;
     private RoomType roomType;
 
+
 }

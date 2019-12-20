@@ -2,6 +2,7 @@ package com.hotel.service.impl;
 
 import com.hotel.dao.AdminDao;
 import com.hotel.pojo.Admin;
+import com.hotel.pojo.Adtype;
 import com.hotel.service.AdminService;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,20 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean deleteAdminByAid(int aid) {
         return adminDao.deleteAdminByAid(aid)>0;
+    }
+
+    @Override
+    public boolean updateAdmin(Admin a) {
+        return adminDao.updateAdmin(a)>0;
+    }
+
+    @Override
+    public boolean updateAdminPassByAid(Admin a) {
+        return adminDao.updateAdminPassByAid(a)>0;
+    }
+
+    @Override
+    public List<Adtype> getAllAdtype() {
+        return adminDao.getAllAdtype();
     }
 }

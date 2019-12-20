@@ -28,6 +28,13 @@ public class ReserveController {
         return template.getForObject(url+"/roomtype/all",List.class);
     }
 
+    @GetMapping("/allReserve")
+    public List<Reserve> getAllReserve(){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/register/allReserve",List.class);
+    }
+
     //添加房间类型
     @PostMapping("/save")
     public String saveRoomType(@RequestBody RoomType rt){
@@ -83,10 +90,10 @@ public class ReserveController {
 
     //查询用户总消费信息列表
     @GetMapping("/allList/{uid}")
-    public List<Finance> getAllListByUid(@PathVariable int uid){
+    public Finance getAllListByUid(@PathVariable int uid){
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
-        return template.getForObject(url+"/roomtype/allList/"+uid,List.class);
+        return template.getForObject(url+"/roomtype/allList/"+uid,Finance.class);
     }
 
     //查询所有人消费列表
@@ -104,5 +111,13 @@ public class ReserveController {
         String url = info.getHomePageUrl();
         return template.getForObject(url+"/roomtype/allprice/",double.class);
     }
+
+    @GetMapping("/deleteReserve/{reid}")
+    public String deleteServer(@PathVariable int reid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/register/deleteReserve/"+reid,String.class);
+    }
+
 
 }

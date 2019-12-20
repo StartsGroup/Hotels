@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
     public Users getUsersByUname(String uname) {
         return userDao.getUsersByUname(uname);
     }
+
+    @Override
+    public boolean updateUserPass(Users u) {
+        return userDao.updateUserPass(u)>0;
+    }
 }

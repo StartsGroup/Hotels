@@ -14,4 +14,10 @@ public interface AdminService {
     boolean saveAdmin(Admin a);
 
     boolean deleteAdminByAid(int aid);
+
+    //根据id修改用户信息
+    boolean updateAdmin(Admin a);
+
+    //根据id修改admin的密码
+    boolean updateAdminPassByAid(Admin a);
 }

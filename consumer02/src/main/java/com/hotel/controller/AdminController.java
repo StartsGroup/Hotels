@@ -47,4 +47,20 @@ public class AdminController {
         String url=info.getHomePageUrl();
         return template.getForObject(url+"/admin/delete/"+aid,String.class);
     }
+
+    //修改用户信息
+    @PostMapping("/update")
+    public String updateAdminByAid(@RequestBody Admin a){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/admin/update",a,String.class);
+    }
+
+    //根据id修改用户信息
+    @PostMapping("/updatepass")
+    public String updateAdminPassByAid(@RequestBody Admin a){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/admin/updatepass",a,String.class);
+    }
 }

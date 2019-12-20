@@ -37,4 +37,20 @@ public class AdminController {
         String result=(flag ? "success":"fail");
         return result;
     }
+
+    //修改用户信息
+    @PostMapping("/update")
+    public String updateAdminByAid(@RequestBody Admin a){
+        boolean flag=adminService.updateAdmin(a);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
+
+    //根据id修改用户信息
+    @PostMapping("/updatepass")
+    public String updateAdminPassByAid(@RequestBody Admin a){
+        boolean flag=adminService.updateAdminPassByAid(a);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
 }

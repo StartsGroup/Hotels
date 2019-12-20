@@ -37,4 +37,14 @@ public class AdminServiceImpl implements AdminService {
     public boolean deleteAdminByAid(int aid) {
         return adminDao.deleteAdminByAid(aid)>0;
     }
+
+    @Override
+    public boolean updateAdmin(Admin a) {
+        return adminDao.updateAdmin(a)>0;
+    }
+
+    @Override
+    public boolean updateAdminPassByAid(Admin a) {
+        return adminDao.updateAdminPassByAid(a)>0;
+    }
 }

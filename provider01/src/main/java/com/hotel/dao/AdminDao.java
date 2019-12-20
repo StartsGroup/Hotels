@@ -1,10 +1,7 @@
 package com.hotel.dao;
 
 import com.hotel.pojo.Admin;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,4 +22,12 @@ public interface AdminDao {
     //删除
     @Delete("delete from admin where aid=#{aid}")
     int deleteAdminByAid(int aid);
+
+    //根据id修改用户信息
+    @Update("update admin set atid=#{atid},aname=#{aname},apass=#{apass},addr=#{addr},atel=#{atel},asex=#{asex} where aid = #{aid}")
+    int updateAdmin(Admin a);
+
+    //根据id修改admin的密码
+    @Update("update admin set apass=#{apass} where aid=#{aid}")
+    int updateAdminPassByAid(Admin a);
 }

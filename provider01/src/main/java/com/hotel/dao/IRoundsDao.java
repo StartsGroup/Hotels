@@ -27,4 +27,7 @@ public interface IRoundsDao {
     @Delete("delete from  rounds  where roid=#{roid}")
     int deleteRounds(int roid);
 
+    @Select("select * from rounds where rotid = #{rotid}")
+    List<Rounds> getRoundsByRotid(int rotid);
+
 }

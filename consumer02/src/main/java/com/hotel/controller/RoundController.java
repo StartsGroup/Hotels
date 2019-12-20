@@ -57,4 +57,11 @@ public class RoundController {
         return restTemplate.postForObject(url+"/updateRounds",rounds,String.class);
     }
 
+    @GetMapping("/getRoundsByRotid/{rotid}")
+    public List<Rounds> getRoundsByRotid(@PathVariable int rotid){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return restTemplate.getForObject(url+"/getRoundsByRotid/"+rotid,List.class);
+    }
+
 }

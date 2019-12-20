@@ -17,5 +17,6 @@ public class Room {
     private String remark;
     private double deposit;
     private String status;
+    private RoomType roomType;
 
 }

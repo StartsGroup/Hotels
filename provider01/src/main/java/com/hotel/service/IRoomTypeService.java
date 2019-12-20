@@ -22,6 +22,9 @@ public interface IRoomTypeService {
     //通过id查询要预定房间的详细信息
     List<RoomType> getRoomDeteils(int rid);
 
+    //查询用户预订信息
+    Reserve selectresByUid(int uid);
+
     //预定房间
     boolean reserveroom(Reserve R);
 
@@ -50,4 +53,13 @@ public interface IRoomTypeService {
 
     //通过uid查询tel
     Users getTelByUid(int uid);
+
+    //根据id查询用户总消费信息
+    List<Finance> getAllListByUid(int uid);
+
+    //查询所有人消费列表
+    List<Finance> getAllList();
+
+    //查询消费总额
+    double getAllPrice();
 }

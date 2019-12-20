@@ -135,4 +135,28 @@ public class ReserveController {
     public TypeRoom getTypeRoom(@PathVariable int rtid){
        return roomTypeService.getTypeRoom(rtid);
     }
+    //查询用户预订信息
+    @GetMapping("/get/{uid}")
+    public Reserve selectresByUid(@PathVariable int uid){
+        return roomTypeService.selectresByUid(uid);
+    }
+
+    //查询用户总消费信息列表
+    @GetMapping("/allList/{uid}")
+    public List<Finance> getAllListByUid(@PathVariable int uid){
+        return roomTypeService.getAllListByUid(uid);
+    }
+
+
+    //查询所有人消费列表
+    @GetMapping("/allList")
+    public List<Finance> getAllList(){
+        return roomTypeService.getAllList();
+    }
+
+    //查询消费总额
+    @GetMapping("/allprice")
+    public double getAllPrice(){
+        return roomTypeService.getAllPrice();
+    }
 }

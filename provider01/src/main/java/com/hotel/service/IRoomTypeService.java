@@ -53,4 +53,13 @@ public interface IRoomTypeService {
 
     //通过uid查询tel
     Users getTelByUid(int uid);
+
+    //根据id查询用户总消费信息
+    Finance getAllListByUid(int uid);
+
+    //查询所有人消费列表
+    List<Finance> getAllList();
+
+    //查询消费总额
+    double getAllPrice();
 }

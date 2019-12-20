@@ -33,6 +33,13 @@ public class RoomController {
         String url=info.getHomePageUrl();
         return restTemplate.getForObject(url+"/provideroom/getRoom/"+rid,Details.class);
     }
+    //根据房间号查房号
+    @GetMapping("/get/{rid}")
+    public Room getRid(@PathVariable  int rid){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return restTemplate.getForObject(url+"/provideroom/get/"+rid,Room.class);
+    }
     //添加房间
     @PostMapping("/save")
     public boolean saveRoom(@RequestBody Room room){

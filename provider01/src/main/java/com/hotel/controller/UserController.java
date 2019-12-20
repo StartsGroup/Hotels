@@ -45,4 +45,16 @@ public class UserController {
         String result=(flag ? "success":"fail");
         return result;
     }
+    @GetMapping("/get/{uname}")
+    public Users getUsersByUname(@PathVariable String uname){
+        return userService.getUsersByUname(uname);
+    }
+
+    //根据id修改用户信息
+    @PostMapping("/updateuserpass")
+    public String updateAdminPassByAid(@RequestBody Users u){
+        boolean flag=userService.updateUserPass(u);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
 }

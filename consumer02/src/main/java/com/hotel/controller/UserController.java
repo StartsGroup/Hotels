@@ -38,6 +38,12 @@ public class UserController {
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/users/ve",u,boolean.class);
     }
+    @GetMapping("/get/{uname}")
+    public Users getUsersByUname(@PathVariable String uname){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/users/get/"+uname,Users.class);
+    }
     @GetMapping("/all/{uid}")
     public Users getUsersByUid(@PathVariable int uid){
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
@@ -56,6 +62,15 @@ public class UserController {
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/users/update",u,String.class);
     }
+
+    //根据id修改用户信息
+    @PostMapping("/updateuserpass")
+    public String updateAdminPassByAid(@RequestBody Users u){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/users/updateuserpass",u,String.class);
+    }
+
     @GetMapping("/yanZ/{tel}")
     @ResponseBody
     public String yanZheng(@PathVariable String tel){

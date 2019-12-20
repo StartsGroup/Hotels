@@ -14,4 +14,5 @@ public interface IRoomService {
     boolean updateRoomStatus(Room room);
     double getRoomPrice(int rid);
     boolean updateStatus(int rid);
+    Room getRid(int rid);
 }

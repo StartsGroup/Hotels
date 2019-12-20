@@ -32,7 +32,8 @@ public interface IRoomDao {
     //删除房间
     @Delete("delete from room where rid=#{rid}")
     int deleteRoom(int rid);
-    @Update("update room set status=#{status} where rid=#{rid}")
+    //修改房间状态
+    @Update("update room set status='已入住' where rid=#{rid}")
     int updateRoomStatus(Room room);
     //获取每种类型的价格
     @Select("select t.price from roomtype t,room r where t.rtid=r.rtid and r.rid=#{rid}")
@@ -43,4 +44,7 @@ public interface IRoomDao {
     //查询类型下的所有房间
     @Select("select * from room where rtid=#{rtid} and status='空闲'")
     List<Room> getAllroom(int rtid);
+    //根据房间号查房号
+    @Select("select * from room where rid=#{rid}")
+    Room getRid(int rid);
 }

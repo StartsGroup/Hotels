@@ -40,4 +40,14 @@ public class UserServiceImpl implements UserService {
     public boolean updateUsersByUid(Users u) {
         return userDao.updateUsersByUid(u)>0;
     }
+
+    @Override
+    public Users getUsersByUname(String uname) {
+        return userDao.getUsersByUname(uname);
+    }
+
+    @Override
+    public boolean updateUserPass(Users u) {
+        return userDao.updateUserPass(u)>0;
+    }
 }

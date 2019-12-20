@@ -17,4 +17,6 @@ public interface UserService {
     Users getUsersByUid(int uid);
 
     boolean updateUsersByUid(Users u);
+
+    Users getUsersByUname(String uname);
 }

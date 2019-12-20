@@ -141,4 +141,22 @@ public class ReserveController {
         return roomTypeService.selectresByUid(uid);
     }
 
+    //查询用户总消费信息列表
+    @GetMapping("/allList/{uid}")
+    public Finance getAllListByUid(@PathVariable int uid){
+        return roomTypeService.getAllListByUid(uid);
+    }
+
+
+    //查询所有人消费列表
+    @GetMapping("/allList")
+    public List<Finance> getAllList(){
+        return roomTypeService.getAllList();
+    }
+
+    //查询消费总额
+    @GetMapping("/allprice")
+    public double getAllPrice(){
+        return roomTypeService.getAllPrice();
+    }
 }

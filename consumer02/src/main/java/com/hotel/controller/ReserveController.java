@@ -1,5 +1,6 @@
 package com.hotel.controller;
 
+import com.hotel.pojo.Finance;
 import com.hotel.pojo.Reserve;
 import com.hotel.pojo.RoomType;
 import com.hotel.pojo.dto.TypeRoom;
@@ -80,5 +81,28 @@ public class ReserveController {
         return template.getForObject(url+"/roomtype/get/"+uid,Reserve.class);
     }
 
+    //查询用户总消费信息列表
+    @GetMapping("/allList/{uid}")
+    public Finance getAllListByUid(@PathVariable int uid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/allList/"+uid,Finance.class);
+    }
+
+    //查询所有人消费列表
+    @GetMapping("/allList")
+    public List<Finance> getAllList(){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/allList/",List.class);
+    }
+
+    //查询消费总额
+    @GetMapping("/allprice")
+    public double getAllPrice(){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/roomtype/allprice/",double.class);
+    }
 
 }

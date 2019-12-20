@@ -49,4 +49,9 @@ public class IRoomServiceImpl implements IRoomService {
     public boolean updateStatus(int rid) {
         return roomDao.updateStatus(rid)>0;
     }
+
+    @Override
+    public Room getRid(int rid) {
+        return roomDao.getRid(rid);
+    }
 }

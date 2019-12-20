@@ -35,7 +35,11 @@ public class RoomController {
 
         return  roomService.getAllRooms();
     }
-
+    //根据房间号查房号
+    @GetMapping("/get/{rid}")
+    public Room getRid(@PathVariable  int rid){
+        return roomService.getRid(rid);
+    }
     @GetMapping("/getRoom/{rid}")
     public Details getById(@PathVariable int  rid){
 

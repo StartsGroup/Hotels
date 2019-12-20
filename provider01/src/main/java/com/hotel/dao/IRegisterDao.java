@@ -9,7 +9,7 @@ import java.util.Map;
 @Mapper
 public interface IRegisterDao {
     //用户信息的登记
-    @Insert("insert into register values(null,#{uid},#{rid},#{rgtimes},#{status})")
+    @Insert("insert into register values(null,#{uid},#{rid},#{rgtimes},'已入住')")
     int saveRegister(Register register);
     //用户登记信息的查看
     @Results({@Result(column = "uid",property = "users",one =@One(select = "com.hotel.dao.UserDao.getUsersByUid")), @Result(column = "rid",property = "room",one =@One(select = "com.hotel.dao.IRoomDao.getRoomByIdRegister"))})

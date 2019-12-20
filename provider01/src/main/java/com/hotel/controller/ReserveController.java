@@ -6,6 +6,7 @@ import com.hotel.pojo.RoomType;
 import com.hotel.pojo.Users;
 import com.hotel.pojo.dto.TypeRoom;
 import com.hotel.quartz.Countdown;
+import com.hotel.service.IReserveService;
 import com.hotel.service.IRoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,10 @@ public class ReserveController {
     @Resource
     private IRoomTypeService roomTypeService;
 
+
+    @Resource
+    private IReserveService reserveService;
+
     @Autowired
     private Countdown countdown;
 
@@ -33,6 +38,8 @@ public class ReserveController {
     public List<RoomType> getAllRoomType() {
         return roomTypeService.getAllRoomType();
     }
+
+
 
     //添加房间类型
     @PostMapping("/save")

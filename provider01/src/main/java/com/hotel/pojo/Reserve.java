@@ -13,4 +13,6 @@ public class Reserve {
     private int uid;
     private String rtimes;
     private String status;
+    private Users users;
+    private Room room;
 }

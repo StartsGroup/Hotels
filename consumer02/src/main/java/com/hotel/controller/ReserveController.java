@@ -27,6 +27,13 @@ public class ReserveController {
         return template.getForObject(url+"/roomtype/all",List.class);
     }
 
+    @GetMapping("/allReserve")
+    public List<Reserve> getAllReserve(){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/register/allReserve",List.class);
+    }
+
     //添加房间类型
     @PostMapping("/save")
     public String saveRoomType(@RequestBody RoomType rt){
@@ -78,6 +85,14 @@ public class ReserveController {
         InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url = info.getHomePageUrl();
         return template.getForObject(url+"/roomtype/get/"+uid,Reserve.class);
+    }
+
+
+    @GetMapping("/deleteReserve/{reid}")
+    public String deleteServer(@PathVariable int reid){
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url = info.getHomePageUrl();
+        return template.getForObject(url+"/register/deleteReserve/"+reid,String.class);
     }
 
 

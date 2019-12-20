@@ -1,6 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.pojo.Admin;
+import com.hotel.pojo.Adtype;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +63,13 @@ public class AdminController {
         InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/admin/updatepass",a,String.class);
+    }
+
+    ////查询所有角色
+    @GetMapping("/getalladtype")
+    public List<Adtype> getAllAdtype(){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.getForObject(url+"/admin/getalladtype/",List.class);
     }
 }

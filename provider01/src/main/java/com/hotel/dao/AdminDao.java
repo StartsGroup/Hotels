@@ -1,6 +1,7 @@
 package com.hotel.dao;
 
 import com.hotel.pojo.Admin;
+import com.hotel.pojo.Adtype;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -30,4 +31,8 @@ public interface AdminDao {
     //根据id修改admin的密码
     @Update("update admin set apass=#{apass} where aid=#{aid}")
     int updateAdminPassByAid(Admin a);
+
+    //查询所有角色
+    @Select("select * from adtype where atid>1")
+    List<Adtype> getAllAdtype();
 }

@@ -1,6 +1,7 @@
 package com.hotel.service;
 
 import com.hotel.pojo.Admin;
+import com.hotel.pojo.Adtype;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ public interface AdminService {
 
     //根据id修改admin的密码
     boolean updateAdminPassByAid(Admin a);
+
+    //查询所有角色
+    List<Adtype> getAllAdtype();
 }

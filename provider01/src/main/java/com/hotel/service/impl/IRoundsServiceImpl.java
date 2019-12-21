@@ -39,4 +39,9 @@ public  class IRoundsServiceImpl  implements IRoundsService {
     public boolean deleteRounds(int roid) {
         return roundsDao.deleteRounds(roid)>0;
     }
+
+    @Override
+    public List<Rounds> getRoundsByRotid(int rotid) {
+        return roundsDao.getRoundsByRotid(rotid);
+    }
 }

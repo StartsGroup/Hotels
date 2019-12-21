@@ -48,4 +48,9 @@ public class RoundController {
         String result=flag ==true ? "success":"fail";
         return  result;
     }
+
+    @GetMapping("/getRoundsByRotid/{rotid}")
+    public List<Rounds> getRoundsByRotid(@PathVariable int rotid){
+        return roundsService.getRoundsByRotid(rotid);
+    }
 }

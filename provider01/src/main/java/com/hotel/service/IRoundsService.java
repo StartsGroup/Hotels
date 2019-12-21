@@ -14,4 +14,6 @@ public interface IRoundsService {
     boolean updateRounds(Rounds rounds);
 
     boolean  deleteRounds(int roid);
+
+    List<Rounds> getRoundsByRotid(int rotid);
 }

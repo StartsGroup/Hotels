@@ -11,6 +11,8 @@ import com.hotel.util.phoneUtil1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
@@ -20,7 +22,7 @@ import java.util.TimerTask;
 @RestController
 public class Countdown {
 
-    @Autowired
+    @Resource
     private IRoomTypeService roomTypeService;
 
     /**
@@ -43,6 +45,7 @@ public class Countdown {
                 Remind(rid,tel);
             }
         }, 172800000);
+        //172800000
         //计时结束时候，停止全部timer计时计划任务
         timer.schedule(new TimerTask() {
             public void run() {
@@ -69,6 +72,7 @@ public class Countdown {
                 Remind1(rid,tel);
             }
         }, 259200000);
+        //259200000
         //计时结束时候，停止全部timer计时计划任务
         timer.schedule(new TimerTask() {
             public void run() {

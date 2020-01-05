@@ -61,4 +61,15 @@ public class ProductsController {
         String result=(flag ? "success":"fail");
         return result;
     }
+    @PostMapping("/savetype")
+    public String saveProductsType(@RequestBody Products pro){
+        boolean flag=productsService.saveProductsType(pro);
+        String result=(flag ? "success":"fail");
+        return result;
+    }
+
+    @PostMapping("/updateProType")
+    public boolean updateProType(@RequestBody Products pro){
+        return productsService.updateProductsType(pro);
+    }
 }

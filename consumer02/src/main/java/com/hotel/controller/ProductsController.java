@@ -77,4 +77,17 @@ public class ProductsController {
         String url=info.getHomePageUrl();
         return template.postForObject(url+"/pro/updatenum",pro,String.class);
     }
+    @PostMapping("/savetype")
+    public String saveProductsType(@RequestBody Products pro){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/pro/savetype",pro,String.class);
+    }
+
+    @PostMapping("/updateProType")
+    public boolean updateProType(@RequestBody Products pro){
+        InstanceInfo info=eurekaClient.getNextServerFromEureka("EUREKA-SERVER01",false);
+        String url=info.getHomePageUrl();
+        return template.postForObject(url+"/pro/updateProType",pro,boolean.class);
+    }
 }

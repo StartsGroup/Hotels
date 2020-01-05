@@ -37,4 +37,11 @@ public interface ProductsDao {
     //下架商品
     @Delete("delete from products where pid=#{pid}")
     int deleteProductsByPid(int pid);
+    //添加类别
+    @Insert("insert into protype values(null,#{ptname})")
+    int saveProductsType(Products pro);
+
+    //更新类型
+    @Update("update protype set ptname=#{ptname} where ptid=#{ptid}")
+    int updateProductsType(Products pro);
 }

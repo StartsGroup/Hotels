@@ -25,4 +25,8 @@ public interface ProductsService {
     List<Products> getAll3Products();
 
     boolean updateNum(Products pro);
+
+    boolean saveProductsType(Products pro);
+
+    boolean updateProductsType(Products pro);
 }

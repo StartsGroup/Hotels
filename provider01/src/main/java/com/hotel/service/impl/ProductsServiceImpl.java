@@ -61,4 +61,14 @@ public class ProductsServiceImpl implements ProductsService {
     public boolean updateNum(Products pro) {
         return productsDao.updateNum(pro)>0;
     }
+
+    @Override
+    public boolean saveProductsType(Products pro) {
+        return productsDao.saveProductsType(pro)>0;
+    }
+
+    @Override
+    public boolean updateProductsType(Products pro) {
+        return productsDao.updateProductsType(pro) > 0;
+    }
 }

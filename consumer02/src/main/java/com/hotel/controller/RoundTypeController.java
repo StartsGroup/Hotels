@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/roundType")
 public class RoundTypeController {
 
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     @Resource

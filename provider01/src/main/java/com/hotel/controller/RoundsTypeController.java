@@ -5,13 +5,14 @@ import com.hotel.service.IRoundTypeService;;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 
 @RestController
 public class RoundsTypeController {
 
-    @Autowired
+    @Resource
     private IRoundTypeService roundTypeService;
 
     @GetMapping("/allType")
